@@ -2,7 +2,14 @@ pipeline {
   agent any
   
    stages{
-
+	stage('Clone Repository') {
+            steps {
+                deleteDir()  // Clean workspace before cloning (optional)
+                git branch: 'main',
+                    url: 'https://github.com/JPYADAV96/devops_project.git'
+                sh "ls -lart"
+            }
+        }
 	stage('Build') { 
             steps { 
                withDockerRegistry([credentialsId: "dockerlogin", url: ""]) {
