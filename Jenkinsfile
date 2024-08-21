@@ -6,8 +6,8 @@ pipeline {
             steps {
                 deleteDir()  // Clean workspace before cloning (optional)
                 git branch: 'main',
-                    url: 'https://github.com/JPYADAV96/devops_project.git'
-                sh "ls -lart"
+                    url: 'https://github.com/JPYADAV96/python-mysql-db-proj-1.git'
+                
             }
         }
 	stage('Build') { 
