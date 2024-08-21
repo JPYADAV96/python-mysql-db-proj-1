@@ -28,7 +28,7 @@ pipeline {
         }
       }
     }
-    stage('Kubernetes Deployment of ASG Bugg Web Application') {
+    stage('Kubernetes Deployment of Flask Application') {
 	   steps {
 	      withKubeConfig([credentialsId: 'kubelogin']) {
 		  sh('kubectl delete all --all -n devsecops')
