@@ -13,7 +13,7 @@ pipeline {
       steps { 
         withDockerRegistry([credentialsId: "dockerlogin", url: ""]) {
           script {
-            app = docker.build("my_ecr_repo")
+            app = docker.build("asg")
           }
         }
       }
