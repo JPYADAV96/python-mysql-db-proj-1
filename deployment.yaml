@@ -14,19 +14,30 @@ spec:
     spec:
       containers:
       - name: flaskapp
-        image: 129390742221.dkr.ecr.eu-west-1.amazonaws.com/my-ecr-repo
+        image: 129390742221.dkr.ecr.eu-west-1.amazonaws.com/my-ecr-repo:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
-# service type loadbalancer       
+        # Optional: Add readiness and liveness probes here
+        # readinessProbe:
+        #   httpGet:
+        #     path: /healthz
+        #     port: 5000
+        #   initialDelaySeconds: 5
+        #   periodSeconds: 10
+        # livenessProbe:
+        #   httpGet:
+        #     path: /healthz
+        #     port: 5000
+        #   initialDelaySeconds: 5
+        #   periodSeconds: 10
 ---
 apiVersion: v1
 kind: Service
 metadata:
+  name: flaskapp
   labels:
     app: flaskapp
-    k8s-app: flaskapp
-  name: flaskapp
 spec:
   ports:
   - name: http
