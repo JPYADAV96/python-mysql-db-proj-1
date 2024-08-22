@@ -1,0 +1,33 @@
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURCVENDQWUyZ0F3SUJBZ0lJZjk0WWw0eGFNeDB3RFFZSktvWklodmNOQVFFTEJRQXdGVEVUTUJFR0ExVUUKQXhNS2EzVmlaWEp1WlhSbGN6QWVGdzB5TkRBNE1qSXdOakExTXpOYUZ3MHpOREE0TWpBd05qRXdNek5hTUJVeApFekFSQmdOVkJBTVRDbXQxWW1WeWJtVjBaWE13Z2dFaU1BMEdDU3FHU0liM0RRRUJBUVVBQTRJQkR3QXdnZ0VLCkFvSUJBUUN0UmxQUTA0U2liS2gvVTRkMFV1aVNlRjd6V01DeHlGc0U0VlVLOVNhazlaZEFnWjU4UHpBZ1E2LysKb3pKTTlkcUFwUjN0RmVHSk9ZcjNYWGNPRTlsaWpuaDFZV0pTbjFUY2JZN2lvTHJpQkFRd01ycHhnZGFvZ0c4dApJaDdWb0x2U1NYYkVLeEhmaUJpRlI5b21yMXhQWlNBb09OUGhGMUVQTWNRcjBNby9JckxOeko0S3VXZjEyWG45CkV3UXhPOXFTbG1DNU1pZHlnVE1sRk83Y1RwalRoc1ZvcS9LNXFScHc4c2dzR05tdVc4c1RwSHFpQXo5RFB6amEKUVM1YkFabW9waWZZeHJQcHpHc0hLTXFqQWdwRzMyWjJjU1ZOV1ArcGs1OStNWEcrS1Z4a1NaUktpSHh4aXQ5bgpkMzExb2krejVmWURxWGZoc2Y4ZXlNZXFqTDZ6QWdNQkFBR2pXVEJYTUE0R0ExVWREd0VCL3dRRUF3SUNwREFQCkJnTlZIUk1CQWY4RUJUQURBUUgvTUIwR0ExVWREZ1FXQkJUdlJ2WHFNOWtqZXMrOUVOYS9NaTFUeTNnanlUQVYKQmdOVkhSRUVEakFNZ2dwcmRXSmxjbTVsZEdWek1BMEdDU3FHU0liM0RRRUJDd1VBQTRJQkFRQis0SW93NHlZNwpwTW8xbGYyOGM1MGllYklTbGgxRDd6MU5KNE9IZERJNjhhMDZYRVRJSHRzVnZTaENBSFplQ2owcHl1Y0VNU253CmFkNEEvdlZYYVZSRDJXVk8vUDFnQWg2V0E2RENGV1lnOFlwRmJZR1UxeVpHNzNTelpkQS9WZTM0U2g1T0h3OFkKMWtaZ0xla0hYc054Y1JjZjE3TmdLQUQzUHNpRUZQd0hpYmV3OGJCMGh1QkJXbTBLQmp5NlkwRmJhU3hhTFM5cwprWmhlUk8xVUpJRkhMYkdhQVFJZk1DQVRTSjVHWWEwN2xsNVJBNWFVKzRneVpVNjliY1c4L3pOaFRoV1VzMTJMCjVsbld6TytidzY3eHAxV3ZPSXowMEIyanV6b0lyYTd6S0d6Z3RwTDk1R1NGMk1vR01wSFVjRnc4MVl0clpmamUKdHVGd0lkK1Q2cmZNCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
+    server: https://F48AC2870B2966E4C60884B73A196EC0.gr7.eu-west-1.eks.amazonaws.com
+  name: kubernete-cluster.eu-west-1.eksctl.io
+contexts:
+- context:
+    cluster: kubernete-cluster.eu-west-1.eksctl.io
+    user: flask_app@kubernete-cluster.eu-west-1.eksctl.io
+  name: flask_app@kubernete-cluster.eu-west-1.eksctl.io
+current-context: flask_app@kubernete-cluster.eu-west-1.eksctl.io
+kind: Config
+preferences: {}
+users:
+- name: flask_app@kubernete-cluster.eu-west-1.eksctl.io
+  user:
+    exec:
+      apiVersion: client.authentication.k8s.io/v1beta1
+      args:
+      - eks
+      - get-token
+      - --output
+      - json
+      - --cluster-name
+      - kubernete-cluster
+      - --region
+      - eu-west-1
+      command: aws
+      env:
+      - name: AWS_STS_REGIONAL_ENDPOINTS
+        value: regional
+      provideClusterInfo: false
