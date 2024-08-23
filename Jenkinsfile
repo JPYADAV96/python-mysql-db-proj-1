@@ -13,7 +13,7 @@ pipeline {
       steps { 
         withDockerRegistry([credentialsId: "dockerlogin", url: ""]) {
           script {
-            app = docker.build("asg")
+            app = docker.build("my-ecr-repo")
           }
         }
       }
@@ -28,13 +28,6 @@ pipeline {
         }
       }
     }
-    stage('Kubernetes Deployment of Flask Application') {
-	   steps {
-	      withKubeConfig([credentialsId: 'kubelogin']) {
-		  
-		  sh ('kubectl apply -f deployment.yaml --namespace=devsecops')
-		}
-	      }
-   	}
+    
   }
 }
