@@ -17,7 +17,7 @@ spec:
         image: 129390742221.dkr.ecr.us-west-2.amazonaws.com/my-ecr-repo:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 8080
+        - containerPort: 5000
         # Optional: Add readiness and liveness probes here
         # readinessProbe:
         #   httpGet:
@@ -43,7 +43,7 @@ spec:
   - name: http
     port: 80
     protocol: TCP
-    targetPort: 8080
+    targetPort: 5000
   type: LoadBalancer
   selector:
     app: flaskapp
