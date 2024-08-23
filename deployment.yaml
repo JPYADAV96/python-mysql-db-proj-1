@@ -14,10 +14,10 @@ spec:
     spec:
       containers:
       - name: flaskapp
-        image: 129390742221.dkr.ecr.eu-west-1.amazonaws.com/my-ecr-repo:latest
+        image: 129390742221.dkr.ecr.us-west-2.amazonaws.com/my-ecr-repo:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 5000
+        - containerPort: 8080
         # Optional: Add readiness and liveness probes here
         # readinessProbe:
         #   httpGet:
@@ -43,7 +43,7 @@ spec:
   - name: http
     port: 80
     protocol: TCP
-    targetPort: 5000
+    targetPort: 8080
   type: LoadBalancer
   selector:
     app: flaskapp
